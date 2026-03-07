@@ -1,0 +1,103 @@
+# Relational Databases
+mysql-connector-python
+mariadb
+psycopg2-binary
+pyodbc
+oracledb
+ibm-db
+teradatasql
+vertica-python
+singlestoredb
+duckdb
+
+# Cloud Databases
+google-cloud-bigquery
+google-cloud-spanner
+google-cloud-firestore
+google-cloud-bigtable
+azure-cosmos
+azure-data-tables
+boto3
+databricks-sql-connector
+snowflake-connector-python
+firebolt-sdk
+supabase
+
+# NoSQL Databases
+pymongo
+redis
+cassandra-driver
+scylla-driver
+couchbase
+rethinkdb
+python-arango
+fdb
+edgedb
+surrealdb
+faunadb
+
+# Graph Databases
+neo4j
+pydgraph
+gremlinpython
+pyorient
+pyTigerGraph
+nebula3-python
+
+# Vector Databases
+qdrant-client
+weaviate-client
+pinecone-client
+chromadb
+pymilvus
+lancedb
+marqo
+
+# Search Engines
+elasticsearch
+opensearch-py
+pysolr
+meilisearch
+typesense
+
+# Time Series
+influxdb-client
+questdb
+
+# Big Data / Analytics
+pyhive
+pyspark
+presto-python-client
+trino
+impyla
+clickhouse-connect
+pydruid
+pyexasol
+gpudb
+
+# Message Queues / Streaming
+kafka-python
+pika
+pulsar-client
+nats-py
+
+# Key-Value Stores
+etcd3
+pymemcache
+
+# Specialized
+happybase
+pyignite
+tarantool
+voltdb
+pymonetdb
+hazelcast-python-client
+rockset
+stardog
+rdflib
+h5py
+pyarrow
+odoorpc
+
+# Utilities
+requests
