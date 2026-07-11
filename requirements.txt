@@ -1,103 +1,103 @@
 # Relational Databases
-mysql-connector-python
-mariadb
-psycopg2-binary
-pyodbc
-oracledb
-ibm-db
-teradatasql
-vertica-python
-singlestoredb
-duckdb
+mysql-connector-python==9.1.0
+mariadb==1.1.10
+psycopg2-binary==2.9.9
+pyodbc==5.1.0
+oracledb==2.4.1
+ibm-db==3.2.3
+teradatasql==20.0.0.1
+vertica-python==1.4.0
+singlestoredb==1.7.0
+duckdb==1.1.3
 
 # Cloud Databases
-google-cloud-bigquery
-google-cloud-spanner
-google-cloud-firestore
-google-cloud-bigtable
-azure-cosmos
-azure-data-tables
-boto3
-databricks-sql-connector
-snowflake-connector-python
-firebolt-sdk
-supabase
+google-cloud-bigquery==3.27.0
+google-cloud-spanner==3.49.1
+google-cloud-firestore==2.19.0
+google-cloud-bigtable==2.26.0
+azure-cosmos==4.7.0
+azure-data-tables==12.5.0
+boto3==1.35.36
+databricks-sql-connector==3.6.0
+snowflake-connector-python==3.12.3
+firebolt-sdk==1.3.0
+supabase==2.9.1
 
 # NoSQL Databases
-pymongo
-redis
-cassandra-driver
-scylla-driver
-couchbase
-rethinkdb
-python-arango
-fdb
-edgedb
-surrealdb
-faunadb
+pymongo==4.10.1
+redis==5.2.1
+cassandra-driver==3.29.2
+scylla-driver==3.26.6
+couchbase==4.3.0
+rethinkdb==2.4.10
+python-arango==8.1.1
+firebird-driver==1.10.4
+edgedb==2.0.0
+surrealdb==0.3.2
+faunadb==4.5.0
 
 # Graph Databases
-neo4j
-pydgraph
-gremlinpython
-pyorient
-pyTigerGraph
-nebula3-python
+neo4j==5.26.0
+pydgraph==21.3.0
+gremlinpython==3.7.2
+pyorient==1.5.5
+pyTigerGraph==1.8.0
+nebula3-python==3.8.0
 
 # Vector Databases
-qdrant-client
-weaviate-client
-pinecone-client
-chromadb
-pymilvus
-lancedb
-marqo
+qdrant-client==1.12.1
+weaviate-client==4.9.5
+pinecone-client==5.0.1
+chromadb==0.5.20
+pymilvus==2.4.9
+lancedb==0.14.1
+marqo==3.9.0
 
 # Search Engines
-elasticsearch
-opensearch-py
-pysolr
-meilisearch
-typesense
+elasticsearch==8.16.0
+opensearch-py==2.7.1
+pysolr==3.10.0
+meilisearch==0.33.0
+typesense==0.21.0
 
 # Time Series
-influxdb-client
-questdb
+influxdb-client==1.46.0
+questdb==2.0.3
 
 # Big Data / Analytics
-pyhive
-pyspark
-presto-python-client
-trino
-impyla
-clickhouse-connect
-pydruid
-pyexasol
-gpudb
+pyhive==0.7.0
+pyspark==3.5.3
+presto-python-client==0.8.4
+trino==0.330.0
+impyla==0.19.0
+clickhouse-connect==0.8.8
+pydruid==0.6.9
+pyexasol==0.27.0
+gpudb==7.2.2.0
 
 # Message Queues / Streaming
-kafka-python
-pika
-pulsar-client
-nats-py
+kafka-python==2.0.2
+pika==1.3.2
+pulsar-client==3.5.0
+nats-py==2.9.0
 
 # Key-Value Stores
-etcd3
-pymemcache
+etcd3==0.12.0
+pymemcache==4.0.0
 
 # Specialized
-happybase
-pyignite
-tarantool
-voltdb
-pymonetdb
-hazelcast-python-client
-rockset
-stardog
-rdflib
-h5py
-pyarrow
-odoorpc
+happybase==1.2.0
+pyignite==0.6.1
+tarantool==1.2.1
+pymonetdb==1.8.1
+hazelcast-python-client==5.5.0
+rockset==2.1.2
+stardog==0.9.14
+simple-salesforce==1.12.6
+rdflib==7.1.1
+h5py==3.12.1
+pyarrow==18.0.0
+odoorpc==0.10.1
 
 # Utilities
-requests
+requests==2.32.3
