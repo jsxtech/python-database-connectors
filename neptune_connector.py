@@ -1,20 +1,28 @@
-import boto3
+"""AWS Neptune connector using gremlin_python."""
 
-def connect():
-    client = boto3.client(
-        "neptune",
-        region_name="<region>",
-        aws_access_key_id="<access-key>",
-        aws_secret_access_key="<secret-key>"
-    )
+import os
+
+from gremlin_python.driver.client import Client
+
+
+def connect() -> Client:
+    """Connect to AWS Neptune via Gremlin.
+
+    Environment variables:
+        NEPTUNE_ENDPOINT: Neptune cluster endpoint
+        NEPTUNE_PORT: Neptune port (default: 8182)
+    """
+    endpoint = os.environ.get('NEPTUNE_ENDPOINT', '<cluster-endpoint>')
+    port = os.environ.get('NEPTUNE_PORT', '8182')
+    client = Client(f'wss://{endpoint}:{port}/gremlin', 'g')
     return client
 
+
 if __name__ == "__main__":
-    from gremlin_python.driver import client as gremlin_client
-    gc = gremlin_client.Client(
-        "wss://<cluster-endpoint>:8182/gremlin",
-        "g"
-    )
-    result = gc.submit("g.V().count()").all().result()
-    print(f"Neptune connected. Vertex count: {result}")
-    gc.close()
+    try:
+        client = connect()
+        result = client.submit("g.V().count()").all().result()
+        print(f"Neptune connected. Vertex count: {result}")
+        client.close()
+    except Exception as e:
+        print(f"Error connecting to Neptune: {e}")
