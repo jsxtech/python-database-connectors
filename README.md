@@ -18,6 +18,22 @@ python postgresql_connector.py
 # etc.
 ```
 
+## Configuration
+
+All connectors use **environment variables** for configuration. Each connector documents its expected variables in the `connect()` docstring.
+
+Example:
+
+```bash
+export PG_HOST=localhost
+export PG_USER=myuser
+export PG_PASSWORD=secret
+export PG_DATABASE=mydb
+python postgresql_connector.py
+```
+
+If environment variables are not set, connectors fall back to placeholder defaults (`<username>`, `<password>`, etc.).
+
 ## Databases Supported
 
 ### Relational Databases
@@ -31,6 +47,9 @@ python postgresql_connector.py
 - Teradata
 - Vertica
 - SingleStore
+- DuckDB
+- CockroachDB
+- Firebird
 
 ### Cloud Databases
 - Aurora PostgreSQL
@@ -50,6 +69,8 @@ python postgresql_connector.py
 - Turso
 - Fauna
 - TiDB
+- Google Bigtable
+- Azure Table Storage
 
 ### NoSQL Databases
 - MongoDB
@@ -59,23 +80,20 @@ python postgresql_connector.py
 - Couchbase
 - RethinkDB
 - ArangoDB
-- Firebird
-- DuckDB
 - EdgeDB
 - SurrealDB
 - YugabyteDB
-- Dragonfly
-- Valkey
 - rqlite
 
 ### Graph Databases
 - Neo4j
-- Neptune
+- Neptune (Gremlin)
 - JanusGraph
 - Dgraph
 - OrientDB
 - TigerGraph
 - Nebula Graph
+- Gremlin (Generic)
 
 ### Vector Databases
 - Qdrant
@@ -106,7 +124,6 @@ python postgresql_connector.py
 - Trino
 - Impala
 - ClickHouse
-- CockroachDB
 - Apache Druid
 - Exasol
 - Kinetica
@@ -120,8 +137,10 @@ python postgresql_connector.py
 ### Key-Value Stores
 - etcd
 - Memcached
+- Dragonfly
+- Valkey
 
-### Specialized Databases
+### Specialized
 - HBase
 - Apache Ignite
 - Tarantool
@@ -130,28 +149,24 @@ python postgresql_connector.py
 - Hazelcast
 - Rockset
 - Stardog (RDF)
-- RDF (Triplestore)
-- Azure Table Storage
-- Google Bigtable
-- Gremlin (Graph Query)
-- Parquet (File Format)
-- Feather (File Format)
-- HDF5 (File Format)
 - Salesforce
 - Odoo
 
-## Configuration
-
-Replace placeholders in each script:
-- `<username>`, `<password>`, `<database>`, `<host>`, etc.
+### File Format Readers
+- Parquet
+- Feather
+- HDF5
+- RDF (Triplestore)
 
 ## Features
 
 - **98 database connectors** covering relational, NoSQL, cloud, graph, vector, and specialized databases
-- **Minimal dependencies** - each connector uses only the required client library
-- **Consistent interface** - all connectors expose a `connect()` function
-- **Ready-to-run examples** - each script includes a `__main__` block with sample usage
-- **Easy to extend** - simple structure makes it easy to add new connectors
+- **Environment variable configuration** — no hardcoded credentials; all config via `os.environ.get()`
+- **Error handling** — all connectors catch and report connection failures gracefully
+- **Type hints and docstrings** — every `connect()` function has return type annotations and documentation
+- **Minimal dependencies** — each connector uses only the required client library
+- **Consistent interface** — all connectors expose a `connect()` function
+- **Ready-to-run examples** — each script includes a `__main__` block with sample usage
 
 ## Testing
 
@@ -166,7 +181,8 @@ for file in sorted(Path('.').glob('*_connector.py')):
     with open(file) as f:
         tree = ast.parse(f.read())
     functions = [n.name for n in ast.walk(tree) if isinstance(n, ast.FunctionDef)]
-    status = '✓' if 'connect' in functions else '✗'
+    has_docstring = isinstance(tree.body[0], ast.Expr) and isinstance(tree.body[0].value, ast.Constant)
+    status = '✓' if 'connect' in functions and has_docstring else '✗'
     print(f'{status} {file.name}')
 "
 ```
